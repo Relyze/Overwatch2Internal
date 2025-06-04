@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{8542ecb5-e9cd-4506-b9db-6d37fe0c3e0d}</ProjectGuid>
+    <RootNamespace>Base</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Base</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <EnableASAN>false</EnableASAN>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ExternalIncludePath>$(ProjectDir)\external\include;$(ExternalIncludePath)</ExternalIncludePath>
+    <LibraryPath>$(ProjectDir)\external\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\Output\$(Configuration)\</OutDir>
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>BaseLib</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <VcpkgUseStatic>true</VcpkgUseStatic>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnabled>true</VcpkgEnabled>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;BASE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;BASE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;BASE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;BASE_EXPORTS;_WINDOWS;_USRDLL;IMGUI_USE_STB_SPRINTF;IMGUI_DISABLE_DEBUG_TOOLS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <DisableSpecificWarnings>4996;6031;4005;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ForcedIncludeFiles>%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointExceptions>true</FloatingPointExceptions>
+      <AdditionalOptions>/D "AMD64" /Zc:threadSafeInit- %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>%(AdditionalDependencies)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/ignore:4099 /NODEFAULTLIB:LIBCMTD /NODEFAULTLIB:LIBCMT %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>libMinHook.x64.lib;d3d11.lib;d3dcompiler.lib;d3dx11.lib;freetype.lib;bddisasm.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+    </Link>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="base\base.h" />
+    <ClInclude Include="base\config\config.h" />
+    <ClInclude Include="base\features\aim\aim.h" />
+    <ClInclude Include="base\features\features.h" />
+    <ClInclude Include="base\features\misc\misc.h" />
+    <ClInclude Include="base\features\visuals\visuals.h" />
+    <ClInclude Include="base\update\update.h" />
+    <ClInclude Include="external\bdshemu\bddisasm.h" />
+    <ClInclude Include="external\bdshemu\bddisasm_status.h" />
+    <ClInclude Include="external\bdshemu\bddisasm_types.h" />
+    <ClInclude Include="external\bdshemu\bddisasm_version.h" />
+    <ClInclude Include="external\bdshemu\bdshemu.h" />
+    <ClInclude Include="external\bdshemu\bdshemu_x86.h" />
+    <ClInclude Include="external\bdshemu\bdx86_constants.h" />
+    <ClInclude Include="external\bdshemu\bdx86_core.h" />
+    <ClInclude Include="external\bdshemu\bdx86_cpuidflags.h" />
+    <ClInclude Include="external\bdshemu\bdx86_instructions.h" />
+    <ClInclude Include="external\bdshemu\bdx86_mnemonics.h" />
+    <ClInclude Include="external\bdshemu\bdx86_prefixes.h" />
+    <ClInclude Include="external\bdshemu\bdx86_registers.h" />
+    <ClInclude Include="external\bdshemu\bdx86_tabledefs.h" />
+    <ClInclude Include="external\bdshemu\bdx86_table_evex.h" />
+    <ClInclude Include="external\bdshemu\bdx86_table_root.h" />
+    <ClInclude Include="external\bdshemu\bdx86_table_vex.h" />
+    <ClInclude Include="external\bdshemu\bdx86_table_xop.h" />
+    <ClInclude Include="external\imgui\Hotkey.h" />
+    <ClInclude Include="external\imgui\InputUtil.h" />
+    <ClInclude Include="external\include\bdshemu\bddisasm_crt.h" />
+    <ClInclude Include="external\include\bdshemu\bdx86_instructions.h" />
+    <ClInclude Include="external\include\bdshemu\bdx86_mnemonics.h" />
+    <ClInclude Include="external\include\bdshemu\bdx86_prefixes.h" />
+    <ClInclude Include="external\include\bdshemu\bdx86_tabledefs.h" />
+    <ClInclude Include="external\include\bdshemu\bdx86_table_evex.h" />
+    <ClInclude Include="external\include\bdshemu\bdx86_table_root.h" />
+    <ClInclude Include="external\include\bdshemu\bdx86_table_vex.h" />
+    <ClInclude Include="external\include\bdshemu\bdx86_table_xop.h" />
+    <ClInclude Include="external\include\bdshemu\inc\bddisasm.h" />
+    <ClInclude Include="external\include\bdshemu\inc\bddisasm_status.h" />
+    <ClInclude Include="external\include\bdshemu\inc\bddisasm_types.h" />
+    <ClInclude Include="external\include\bdshemu\inc\bddisasm_version.h" />
+    <ClInclude Include="external\include\bdshemu\inc\bdshemu.h" />
+    <ClInclude Include="external\include\bdshemu\inc\bdshemu_x86.h" />
+    <ClInclude Include="external\include\bdshemu\inc\bdx86_constants.h" />
+    <ClInclude Include="external\include\bdshemu\inc\bdx86_core.h" />
+    <ClInclude Include="external\include\bdshemu\inc\bdx86_cpuidflags.h" />
+    <ClInclude Include="external\include\bdshemu\inc\bdx86_registers.h" />
+    <ClInclude Include="external\include\capstone\aarch64.h" />
+    <ClInclude Include="external\include\capstone\alpha.h" />
+    <ClInclude Include="external\include\capstone\arm.h" />
+    <ClInclude Include="external\include\capstone\arm64.h" />
+    <ClInclude Include="external\include\capstone\bpf.h" />
+    <ClInclude Include="external\include\capstone\capstone.h" />
+    <ClInclude Include="external\include\capstone\cs_operand.h" />
+    <ClInclude Include="external\include\capstone\evm.h" />
+    <ClInclude Include="external\include\capstone\hppa.h" />
+    <ClInclude Include="external\include\capstone\loongarch.h" />
+    <ClInclude Include="external\include\capstone\m680x.h" />
+    <ClInclude Include="external\include\capstone\m68k.h" />
+    <ClInclude Include="external\include\capstone\mips.h" />
+    <ClInclude Include="external\include\capstone\mos65xx.h" />
+    <ClInclude Include="external\include\capstone\platform.h" />
+    <ClInclude Include="external\include\capstone\ppc.h" />
+    <ClInclude Include="external\include\capstone\riscv.h" />
+    <ClInclude Include="external\include\capstone\sh.h" />
+    <ClInclude Include="external\include\capstone\sparc.h" />
+    <ClInclude Include="external\include\capstone\systemz.h" />
+    <ClInclude Include="external\include\capstone\tms320c64x.h" />
+    <ClInclude Include="external\include\capstone\tricore.h" />
+    <ClInclude Include="external\include\capstone\wasm.h" />
+    <ClInclude Include="external\include\capstone\x86.h" />
+    <ClInclude Include="external\include\capstone\xcore.h" />
+    <ClInclude Include="external\kiero\d3d11_impl.h" />
+    <ClInclude Include="external\kiero\kiero.h" />
+    <ClInclude Include="external\kiero\win32_impl.h" />
+    <ClInclude Include="globals.h" />
+    <ClInclude Include="menu\font.h" />
+    <ClInclude Include="external\imgui\imconfig.h" />
+    <ClInclude Include="external\imgui\imgui.h" />
+    <ClInclude Include="external\imgui\imgui_freetype.h" />
+    <ClInclude Include="external\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="external\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="external\imgui\imgui_internal.h" />
+    <ClInclude Include="external\imgui\imgui_settings.h" />
+    <ClInclude Include="external\imgui\imstb_rectpack.h" />
+    <ClInclude Include="external\imgui\imstb_textedit.h" />
+    <ClInclude Include="external\imgui\imstb_truetype.h" />
+    <ClInclude Include="external\imgui\stb_image.h" />
+    <ClInclude Include="external\imgui\stb_sprintf.h" />
+    <ClInclude Include="includes.h" />
+    <ClInclude Include="menu\menu.h" />
+    <ClInclude Include="ow\components\components.h" />
+    <ClInclude Include="ow\components\component\component.h" />
+    <ClInclude Include="ow\components\connection\connection.h" />
+    <ClInclude Include="ow\components\controller\controller.h" />
+    <ClInclude Include="ow\components\health\health.h" />
+    <ClInclude Include="ow\components\hero\hero.h" />
+    <ClInclude Include="ow\components\model\model.h" />
+    <ClInclude Include="ow\components\outline\outline.h" />
+    <ClInclude Include="ow\components\rotate\rotate.h" />
+    <ClInclude Include="ow\components\state\state.h" />
+    <ClInclude Include="ow\components\tag\tag.h" />
+    <ClInclude Include="ow\components\team\team.h" />
+    <ClInclude Include="ow\entity.h" />
+    <ClInclude Include="ow\sdk\decryption\decrypt.h" />
+    <ClInclude Include="ow\sdk\sdk.h" />
+    <ClInclude Include="utility\math.hpp" />
+    <ClInclude Include="utility\memory.h" />
+    <ClInclude Include="utility\offsets.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="base\base.cpp" />
+    <ClCompile Include="base\config\config.cpp" />
+    <ClCompile Include="base\features\aim\aim.cpp" />
+    <ClCompile Include="base\features\features.cpp" />
+    <ClCompile Include="base\features\misc\misc.cpp" />
+    <ClCompile Include="base\features\visuals\visuals.cpp" />
+    <ClCompile Include="base\update\update.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="external\bdshemu.cpp" />
+    <ClCompile Include="external\imgui\Hotkey.cpp" />
+    <ClCompile Include="external\imgui\InputUtil.cpp" />
+    <ClCompile Include="external\imgui\imgui.cpp" />
+    <ClCompile Include="external\imgui\imgui_draw.cpp" />
+    <ClCompile Include="external\imgui\imgui_freetype.cpp" />
+    <ClCompile Include="external\imgui\imgui_impl_dx11.cpp">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NDEBUG;BASE_EXPORTS;_WINDOWS;_USRDLL;IMGUI_DISABLE_DEFAULT_FORMAT_FUNCTIONS;IMGUI_USE_STB_SPRINTF;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="external\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="external\imgui\imgui_tables.cpp" />
+    <ClCompile Include="external\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="external\kiero\d3d11_impl.cpp" />
+    <ClCompile Include="external\kiero\kiero.cpp" />
+    <ClCompile Include="external\kiero\win32_impl.cpp" />
+    <ClCompile Include="ow\components\connection\connection.cpp" />
+    <ClCompile Include="ow\components\controller\controller.cpp" />
+    <ClCompile Include="ow\components\health\health.cpp" />
+    <ClCompile Include="ow\components\hero\hero.cpp" />
+    <ClCompile Include="ow\components\model\model.cpp" />
+    <ClCompile Include="ow\components\outline\outline.cpp" />
+    <ClCompile Include="ow\components\rotate\rotate.cpp" />
+    <ClCompile Include="ow\entity.cpp" />
+    <ClCompile Include="ow\sdk\decryption\decrypt.cpp" />
+    <ClCompile Include="ow\sdk\sdk.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="external\lib\capstone.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="ow\sdk\decryption\eidolon_decryption.masm">
+      <FileType>Document</FileType>
+    </MASM>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>

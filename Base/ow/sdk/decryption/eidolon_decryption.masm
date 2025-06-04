@@ -1,0 +1,7 @@
+.code
+    __forcedecryption proc
+      mov rax, rcx
+      call rdx
+      ret
+    __forcedecryption endp
+end
